@@ -1,0 +1,31 @@
+`timescale 1ns/1ps
+
+module tb_mux_gate;
+
+reg a, b, c;
+wire y;
+
+mux_gate uut(
+    .a(a),
+    .b(b),
+    .c(c),
+    .y(y)
+);
+
+initial begin
+    $dumpfile("mux_gate.vcd");
+    $dumpvars(0, tb_mux_gate);
+
+    // 초기 값 설정
+    a = 0; b = 1;
+    
+    #10;
+    c = 0;
+    #10;
+    c = 1;
+    #10;
+
+    $finish;  // 시뮬레이션 종료
+end
+
+endmodule
